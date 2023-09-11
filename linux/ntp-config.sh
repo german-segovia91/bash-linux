@@ -1,8 +1,8 @@
 #!/bin/bash
 #Servidor NTP Primario
-    NTPERVICE1="ntp-beiro1.mitrol-intra.net";
+    NTPERVICE1="ntp-teco1.mitrol-intra.net";
 #Servidor NTP Secundario
-    NTPERVICE2="ntp-beiro2.mitrol-intra.net";
+    NTPERVICE2="ntp-teco2.mitrol-intra.net";
 
 echo -e "Estos son los Servidores a implementar"
 echo -e "Servidor Primario = $NTPERVICE1"
