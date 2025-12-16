@@ -1,0 +1,18 @@
+---
+- hosts: selenium_hub
+  become: true
+  tasks:
+    - name: Enable IP forwarding
+      shell: "echo 1 | tee /proc/sys/net/ipv4/ip_forward"
+
+- hosts: selenium_nodes
+  become: true
+  tasks:
+    - name: Enable IP forwarding
+      shell: "echo 1 | tee /proc/sys/net/ipv4/ip_forward"
+
+- hosts: selenium_nodes2
+  become: true
+  tasks:
+    - name: Enable IP forwarding
+      shell: "echo 1 | tee /proc/sys/net/ipv4/ip_forward"

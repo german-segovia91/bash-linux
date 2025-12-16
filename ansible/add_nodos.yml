@@ -1,0 +1,7 @@
+---
+- hosts: selenium_nodes2
+  remote_user: mituser
+  become: true
+  tasks:
+    - name: Add nodes to Hub
+      shell: "sudo kubeadm join 10.30.9.100:6443 --token t19smz.n3b7x85s00acl8pq --discovery-token-ca-cert-hash sha256:2e32e77bdbb438b6b53ef5a524e1cfda385044cbcd08a438d86127466df439f5"

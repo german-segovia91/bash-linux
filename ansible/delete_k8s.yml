@@ -1,0 +1,24 @@
+- hosts: selenium_nodes
+  become: true
+  tasks:
+    - name: Reset Kubernetes on Selenium Nodes
+      shell: "kubeadm reset -f"
+
+    - name: Reboot Selenium Nodes after kubeadm reset
+      reboot:
+        reboot_timeout: 90  # Espera hasta 5 minutos  para el reinicio completo
+
+- hosts: selenium_hub
+  become: true
+  tasks:
+    - name: Reset Kubernetes on Selenium Hub
+      shell: "kubeadm reset -f"
+
+    - name: Remove .kube directory on Selenium Hub
+      file:
+        path: "/home/mituser/.kube"
+        state: absent  # Borra el directorio .kube
+
+    - name: Reboot Selenium Hub after kubeadm reset and .kube removal
+      reboot:
+        reboot_timeout: 90  # Espera hasta 5 minutos para el reinicio completo

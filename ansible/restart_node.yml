@@ -1,0 +1,10 @@
+- hosts: selenium_nodes
+  become: true
+  tasks:
+    - name: Reboot Selenium Nodes manteniendo la conexion
+      reboot:
+        reboot_timeout: 90  # Espera hasta 5 minutos  para el reinicio completo
+
+    - name: Enable IP forwarding
+      shell: "echo 1 | tee /proc/sys/net/ipv4/ip_forward"
+

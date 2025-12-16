@@ -1,0 +1,46 @@
+# k8s_label_workers.yml
+- name: Etiquetar nodos como workers desde el control-plane
+  hosts: selenium_hub
+  remote_user: mituser
+  become: true
+  gather_facts: false
+
+  vars:
+    kubeconfig: /etc/kubernetes/admin.conf
+    node_list: "{{ groups['selenium_nodes'] | default([]) }}"
+
+  pre_tasks:
+    - name: Detectar ruta de kubectl
+      shell: |
+        set -o pipefail
+        for p in /usr/bin/kubectl /usr/local/bin/kubectl /snap/bin/kubectl; do
+          [ -x "$p" ] && echo "$p" && exit 0
+        done
+        command -v kubectl || true
+      args: { executable: /bin/bash }
+      register: kubectl_detect
+      changed_when: false
+
+    - name: Fallar si kubectl no está disponible
+      fail:
+        msg: "kubectl no está instalado ni en PATH (/usr/bin,/usr/local/bin,/snap/bin). Instalalo o ajustá kubectl_path."
+      when: kubectl_detect.stdout | trim == ""
+
+    - set_fact:
+        kubectl_path: "{{ kubectl_detect.stdout | trim }}"
+
+  tasks:
+    - name: Verificar acceso al cluster
+      command: "{{ kubectl_path }} version --client"
+      environment:
+        KUBECONFIG: "{{ kubeconfig }}"
+        PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/snap/bin"
+      run_once: true
+
+    - name: Poner label role=worker a cada nodo del inventario
+      command: "kubectl label nodes {{ item }} role=worker"
+      environment:
+        KUBECONFIG: "{{ kubeconfig }}"
+        PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/snap/bin"
+      loop: "{{ node_list }}"
+      run_once: true

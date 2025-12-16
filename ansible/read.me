@@ -1,0 +1,5 @@
+### ejecucion como administrador
+ansible-playbook add_nodos.yml --ask-become-pass
+
+###solo nodo
+ansible-playbook -i hosts add_nodos_clear.yml --ask-become-pass -l AR-SEL-NODE3-01

@@ -1,0 +1,20 @@
+- name: Etiquetar nodos como workers
+  hosts: selenium_hub
+  remote_user: mituser
+  become: true
+  tasks:
+    - name: Label a cada nodo del grupo
+      ansible.builtin.command: >
+        /usr/bin/kubectl label nodes {{ item }} role=worker
+      loop: "{{ groups['selenium_nodes'] }}"
+      environment:
+        KUBECONFIG: /etc/kubernetes/admin.conf
+        PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/snap/bin"
+
+    - name: Label a cada hub del grupo
+      ansible.builtin.command: >
+        /usr/bin/kubectl label nodes {{ item }} role=head
+      loop: "{{ groups['selenium_hub'] }}"
+      environment:
+        KUBECONFIG: /etc/kubernetes/admin.conf
+        PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/snap/bin"

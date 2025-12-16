@@ -1,0 +1,39 @@
+- name: Copiar archivo a nodos de Selenium
+  hosts: selenium_nodes2:selenium_nodes
+  become: true
+  gather_facts: false
+
+  vars:
+    src_file: ./shared/setup-audio-permissions.sh             # en tu máquina (control node)
+    dest_path: /usr/src/app/audio/setup-audio-permissions.sh               # destino en cada nodo
+
+  tasks:
+    - name: Crear carpeta destino (si no existe)
+      ansible.builtin.file:
+        path: "{{ dest_path | dirname }}"
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copiar archivo
+      ansible.builtin.copy:
+        src: "{{ src_file }}"
+        dest: "{{ dest_path }}"
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes
+
+- name: Ejecutar script remoto
+  hosts: selenium_nodes2:selenium_nodes
+  become: yes
+  tasks:
+
+    - name: Dar permisos de ejecución al script
+      file:
+        path: /usr/src/app/audio/setup-audio-permissions.sh
+        mode: '0755'
+
+    - name: Ejecutar el script
+      command: /usr/src/app/audio/setup-audio-permissions.sh

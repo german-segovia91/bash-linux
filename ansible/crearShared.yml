@@ -1,0 +1,26 @@
+- name: Copiar archivo a nodos de Selenium
+  hosts: selenium_nodes2
+  become: true
+  gather_facts: false
+
+  vars:
+    src_file: ./shared/voice.wav              # en tu máquina (control node)
+    dest_path: /usr/src/app/audio/voice.wav               # destino en cada nodo
+
+  tasks:
+    - name: Crear carpeta destino (si no existe)
+      ansible.builtin.file:
+        path: "{{ dest_path | dirname }}"
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Copiar archivo
+      ansible.builtin.copy:
+        src: "{{ src_file }}"
+        dest: "{{ dest_path }}"
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes

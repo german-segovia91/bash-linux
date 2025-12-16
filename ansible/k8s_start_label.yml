@@ -1,0 +1,52 @@
+---
+- hosts: selenium_hub
+  become: true
+  tasks:
+    - name: head config
+      shell: "kubectl label nodes ar-sel-hub2-003 role=head"
+
+    - name: worker node 1
+      shell: "kubectl label nodes ar-sel-node2-01 role=worker"
+
+    - name: worker node 2
+      shell: "kubectl label nodes ar-sel-node2-02 role=worker"
+
+    - name: worker node 3
+      shell: "kubectl label nodes ar-sel-node2-03 role=worker"
+
+    - name: worker node 4
+      shell: "kubectl label nodes ar-sel-node2-04 role=worker"
+
+    - name: worker node 5
+      shell: "kubectl label nodes ar-sel-node2-05 role=worker"
+
+    - name: worker node 6
+      shell: "kubectl label nodes ar-sel-node2-06 role=worker"
+
+    - name: worker node 7
+      shell: "kubectl label nodes ar-sel-node2-07 role=worker"
+
+    - name: worker node 8
+      shell: "kubectl label nodes ar-sel-node2-08 role=worker"
+
+    - name: worker node 9
+      shell: "kubectl label nodes ar-sel-node2-09 role=worker"
+
+    - name: worker node 10
+      shell: "kubectl label nodes ar-sel-node2-10 role=worker"
+
+    - name: worker node 11
+      shell: "kubectl label nodes ar-sel-node2-11 role=worker"
+
+    - name: worker node 12
+      shell: "kubectl label nodes ar-sel-node2-12 role=worker"
+
+    - name: worker node 13
+      shell: "kubectl label nodes ar-sel-node2-13 role=worker"
+
+    - name: worker node 14
+      shell: "kubectl label nodes ar-sel-node2-14 role=worker"
+
+    - name: worker node 15
+      shell: "kubectl label nodes ar-sel-node2-15 role=worker"
+

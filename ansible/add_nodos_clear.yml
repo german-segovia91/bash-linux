@@ -1,0 +1,100 @@
+# kubeadm-reset-and-join.yml
+- name: Reset + Join de nodo Kubernetes (worker)
+  hosts: selenium_nodes
+  remote_user: mituser
+  become: true
+  gather_facts: yes
+
+  vars:
+    api_server: "10.30.9.97:6443"              # <--- API server
+    kubeadm_token: "051q0i.x9yovw30fxxia6ai"  # <--- token válido
+    discovery_hash: "sha256:1c3a1f91ddd47eb3d67fb0a9334fc4cd552d8dbd0781b9366208f9b6e4492841"
+    cri_socket: "/run/containerd/containerd.sock"  # cambia si usás otro runtime
+    # si usás proxy/bastion, podés pasar -e 'ansible_ssh_common_args=-J bastion@host'
+
+  tasks:
+    - name: swapoff
+      ansible.builtin.command: swapoff -a
+      changed_when: false  # si ya está off, no marcar changed
+
+    - name: Comentar entradas swap en /etc/fstab (persistente)
+      ansible.builtin.lineinfile:
+        path: /etc/fstab
+        regexp: '^\s*[^#].*\s+swap\s+'
+        state: absent
+
+    - name: Asegurar kubelet detenido (por si quedó activo)
+      ansible.builtin.systemd:
+        name: kubelet
+        state: stopped
+      failed_when: false
+
+    - name: kubeadm reset -f
+      ansible.builtin.command: kubeadm reset -f
+      register: reset_out
+      changed_when: "'already' not in reset_out.stdout | default('')"
+
+    - name: Borrar redes CNI y estado
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/cni/net.d
+        - /var/lib/cni
+
+    - name: Borrar interfaces cni0 y flannel.1 si existen (ignorar error)
+      ansible.builtin.shell: |
+        ip link delete cni0 2>/dev/null || true
+        ip link delete flannel.1 2>/dev/null || true
+      changed_when: false
+
+    - name: Flush de iptables (filter, nat)
+      ansible.builtin.shell: |
+        iptables -t nat -F || true
+        iptables -F || true
+        iptables -X || true
+      changed_when: false
+
+    - name: Borrar config de Kubernetes/kubelet vieja
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /etc/kubernetes
+      # Ojo: NO borrar /var/lib/etcd en control-plane
+
+ # <<< ESTA ES LA QUE TE FALLA: reemplazada por FILE >>>
+    - name: Borrar /var/lib/kubelet y recrear limpio
+      block:
+        - ansible.builtin.file:
+            path: /var/lib/kubelet
+            state: absent
+        - ansible.builtin.file:
+            path: /var/lib/kubelet
+            state: directory
+            owner: root
+            group: root
+            mode: '0755'
+    
+    - name: Reiniciar kubelet
+      ansible.builtin.systemd:
+        name: kubelet
+        state: restarted
+        enabled: yes
+    
+    - name: Ejecutar kubeadm join (solo si aún no está unido)
+      ansible.builtin.command: >
+        sudo kubeadm join {{ api_server }}
+        --token {{ kubeadm_token }}
+        --discovery-token-ca-cert-hash {{ discovery_hash }}
+      args:
+        creates: /etc/kubernetes/kubelet.conf
+
+    - name: Mostrar estado del kubelet
+      ansible.builtin.shell: systemctl is-active kubelet
+      register: kubelet_state
+      changed_when: false
+
+    - name: Debug
+      ansible.builtin.debug:
+        msg: "kubelet está {{ kubelet_state.stdout }}"

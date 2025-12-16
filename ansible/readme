@@ -1,0 +1,3 @@
+Para ejecuta el ansible es de la siguiente manera:
+
+ ansible-playbook [Docuemto a ejecutar] --ask-become-pass

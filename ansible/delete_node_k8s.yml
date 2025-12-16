@@ -1,0 +1,9 @@
+- hosts: selenium_nodes
+  become: true
+  tasks:
+    - name: Reset Kubernetes on Selenium Nodes
+      shell: "kubeadm reset -f"
+
+    - name: Reboot Selenium Nodes after kubeadm reset
+      reboot:
+        reboot_timeout: 90  # Espera hasta 5 minutos  para el reinicio completo

@@ -1,0 +1,71 @@
+[selenium_nodes]
+ar-sel-node3-01 ansible_host=10.30.9.96 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-02 ansible_host=10.30.9.95 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-03 ansible_host=10.30.9.94 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-04 ansible_host=10.30.9.93 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-05 ansible_host=10.30.9.92 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-06 ansible_host=10.30.9.91 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-07 ansible_host=10.30.9.90 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-08 ansible_host=10.30.9.89 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-09 ansible_host=10.30.9.88 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-10 ansible_host=10.30.9.87 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-11 ansible_host=10.30.9.86 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-12 ansible_host=10.30.9.85 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-13 ansible_host=10.30.9.84 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-14 ansible_host=10.30.9.83 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-15 ansible_host=10.30.9.82 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-16 ansible_host=10.30.9.66 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-17 ansible_host=10.30.9.67 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-18 ansible_host=10.30.9.68 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-19 ansible_host=10.30.9.69 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-20 ansible_host=10.30.9.70 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-21 ansible_host=10.30.9.72 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-22 ansible_host=10.30.9.73 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-23 ansible_host=10.30.9.74 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-24 ansible_host=10.30.9.75 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-25 ansible_host=10.30.9.76 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-26 ansible_host=10.30.9.77 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-27 ansible_host=10.30.9.78 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-28 ansible_host=10.30.9.79 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-29 ansible_host=10.30.9.80 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-30 ansible_host=10.30.9.81 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+
+[selenium_nodes2]
+ar-sel-node3-31 ansible_host=10.30.9.101 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-32 ansible_host=10.30.9.102 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-33 ansible_host=10.30.9.103 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-34 ansible_host=10.30.9.104 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-35 ansible_host=10.30.9.105 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-36 ansible_host=10.30.9.106 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-37 ansible_host=10.30.9.107 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-38 ansible_host=10.30.9.108 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-39 ansible_host=10.30.9.109 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-40 ansible_host=10.30.9.110 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-41 ansible_host=10.30.9.111 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-42 ansible_host=10.30.9.112 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-43 ansible_host=10.30.9.113 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-44 ansible_host=10.30.9.114 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-45 ansible_host=10.30.9.115 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-46 ansible_host=10.30.9.116 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-47 ansible_host=10.30.9.117 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-48 ansible_host=10.30.9.118 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-49 ansible_host=10.30.9.119 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-sel-node3-50 ansible_host=10.30.9.120 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+
+
+[selenium_hub]
+ar-sel-hub3-01 ansible_host=10.30.9.97 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+
+[k8s_qa_hub]
+ar-qa-k8s-01 ansible_host=10.30.9.100 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+
+[k8s_qa_node]
+ar-qa-k8s-02 ansible_host=10.30.9.101 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-03 ansible_host=10.30.9.102 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-04 ansible_host=10.30.9.103 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-05 ansible_host=10.30.9.104 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-06 ansible_host=10.30.9.105 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-07 ansible_host=10.30.9.106 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-08 ansible_host=10.30.9.107 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-09 ansible_host=10.30.9.108 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519
+ar-qa-k8s-10 ansible_host=10.30.9.109 ansible_user=mituser ansible_ssh_private_key_file=~/.ssh/id_ed25519

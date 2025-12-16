@@ -1,0 +1,7 @@
+- hosts: selenium_hub
+  become: true
+  tasks:
+    - name: Run reset-k8.s script on Selenium Hub
+      shell: "./reset-k8.sh"
+      args:
+        chdir: /home/mituser/k8s/

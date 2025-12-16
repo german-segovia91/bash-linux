@@ -1,0 +1,11 @@
+- hosts: selenium_nodes
+  become: true
+  tasks:
+    - name: Apagar los Selenium Nodes
+      ansible.builtin.shell: |
+        shutdown -h now
+      async: 0
+      poll: 0
+      ignore_errors: true
+
+
